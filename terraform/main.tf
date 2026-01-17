@@ -1,3 +1,11 @@
+terraform {
+    backend "s3" {
+        bucket = "terraform-state-bucket-20260118-t" # 事前に手動で作ったS3バケット名
+        key    = "infrastructure.tfstate"  # バケット内での保存パス（好きな名前でOK）
+        region = "ap-northeast-1"
+    }
+}
+
 provider "aws" {
   region = "ap-northeast-1"
 }
@@ -17,16 +25,4 @@ resource "aws_dynamodb_table" "example_table" {
     Environment = "Dev"
     CreatedBy   = "GitHubActions"
   }
-}
-
-terraform {
-    backend "s3" {
-        bucket = "terraform-state-bucket-20260118-t" # 事前に手動で作ったS3バケット名
-        key    = "infrastructure.tfstate"  # バケット内での保存パス（好きな名前でOK）
-        region = "ap-northeast-1"
-    }
-}
-
-provider "aws" {
-    region = "ap-northeast-1"
 }
