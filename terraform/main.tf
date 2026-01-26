@@ -2,6 +2,16 @@ provider "aws" {
   region = "ap-northeast-1"
 }
 
+terraform {
+  backend "s3" {
+    bucket         = "my-terraform-state-bucket"
+    key            = "infrastructure/terraform.tfstate"
+    region         = "ap-northeast-1"
+    dynamodb_table = "terraform-lock"
+  }
+}
+
+
 ####################
 # DynamoDB
 ####################
