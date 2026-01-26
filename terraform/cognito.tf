@@ -56,6 +56,6 @@ resource "aws_apigatewayv2_authorizer" "cognito_jwt" {
 }
 
 resource "aws_cognito_user_pool_domain" "this" {
-  domain       = "example-auth-domain"
-  user_pool_id = aws_cognito_user_pool.this.id
+  domain       = "sample-auth-domain"
+  user_pool_id = aws_cognito_user_pool.user_pool.id
 }
