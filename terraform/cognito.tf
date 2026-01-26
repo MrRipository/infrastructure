@@ -54,3 +54,8 @@ resource "aws_apigatewayv2_authorizer" "cognito_jwt" {
     issuer = "https://cognito-idp.ap-northeast-1.amazonaws.com/${aws_cognito_user_pool.user_pool.id}"
   }
 }
+
+resource "aws_cognito_user_pool_domain" "this" {
+  domain       = "example-auth-domain"
+  user_pool_id = aws_cognito_user_pool.this.id
+}
